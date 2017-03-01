@@ -1,3 +1,34 @@
 .multi-select {
+	color: inherit;
+	background-color: inherit;
+	padding: 15px;
 
+	.multi-select-header {
+		line-height: 30px;
+    	height: 30px;
+		.multi-select-title {
+			font-size: 20px;
+			color: #ddd;
+		}
+		.multi-select-clear {
+			float: right;
+    		font-weight: bold;
+    		font-size: 14px;
+		}
+	}
+
+	.multi-select-content{
+		.multi-select-group{
+			.multi-select-group-header{
+
+			}
+			.multi-select-group-content{
+				color: #ddd;
+				margin-left: 18px;
+				.multi-select-item{
+
+				}
+			}
+		}
+	}
 }
