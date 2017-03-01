@@ -1,4 +1,26 @@
-.mk-application{
-	margin: 0;
-	padding: 0;
+@import '../common/styles/index';
+
+$siderWidth: 300px;
+$headerHeight: 50px;
+$baseBgColor: #ddd;
+
+.mk-application {
+	@include absolute(0, initial, 0);
+    height: 100%;
+
+    .mk-header {
+		height: $headerHeight;
+	    border-bottom: 1px solid #ddd;
+	}
+
+	.mk-sider {
+		width: $siderWidth;
+		@include absolute(0, $headerHeight, initial, 0);
+	    border-right: 1px solid #ddd;
+	}
+
+	.mk-container {
+		@include absolute($siderWidth, $headerHeight, 0, 0);
+	}
 }
+

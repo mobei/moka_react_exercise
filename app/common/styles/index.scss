@@ -1,0 +1,19 @@
+// 一个简单的reset
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a:hover,
+a:focus {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+@mixin absolute($l:initial, $t:initial, $r:initial, $b:initial) {
+	position: absolute;
+	left:$l;
+	top:$t;
+	right: $r;
+	bottom: $b;
+}
