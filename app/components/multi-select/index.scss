@@ -1,11 +1,21 @@
+$imagePath: './images/';
+
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
 .multi-select {
 	color: inherit;
 	background-color: inherit;
 	padding: 15px;
+	max-width: 600px;
 
 	.multi-select-header {
-		line-height: 30px;
-    	height: 30px;
+		line-height: 35px;
+    	height: 35px;
 		.multi-select-title {
 			font-size: 20px;
 			color: #ddd;
@@ -14,19 +24,61 @@
 			float: right;
     		font-weight: bold;
     		font-size: 14px;
+    		padding: 0 10px;
+    		&:hover{
+    			color: #ddd;
+    		}
 		}
 	}
 
 	.multi-select-content{
 		.multi-select-group{
-			.multi-select-group-header{
-
+			margin-top: 20px;
+			.badge {
+				float: right;
+    			padding: 0px 10px;
+			}
+			.multi-select-checkbox {
+				margin-right: 10px;
+			}
+			.multi-select-group-header {
+				line-height: 25px;
+				label{
+					cursor: pointer;
+					.drop-btn {
+						display: inline-block;
+						width: 20px;
+						height: 17px;
+						vertical-align: middle;
+						&.drop-down{
+							background: url($imagePath+'drop-down.png') no-repeat 0 0 transparent;
+							background-size: 20px 15px;
+						}
+						&.drop-up{
+							background: url($imagePath+'drop-up.png') no-repeat 0 0 transparent;
+							background-size: 20px 15px;
+						}
+					}
+					
+				}
+				.badge {
+					border-radius: 15px;
+    				background-color: #47565d;
+				}
 			}
 			.multi-select-group-content{
 				color: #ddd;
 				margin-left: 18px;
+				margin-bottom: 10px;
 				.multi-select-item{
-
+					margin-top: 5px;
+    				line-height: 25px;
+    				&:hover {
+						background-color: #576c75;
+    				}
+					label {
+						cursor: pointer;
+					}
 				}
 			}
 		}

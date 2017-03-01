@@ -2,7 +2,7 @@ const data = {
 	title: '招聘职位',
 	departments: [{
 		id: 1,
-		name: '工程研发开部門',
+		name: '工程研发部門',
 		value: 120,
 		positions: [{
 			id: 1,

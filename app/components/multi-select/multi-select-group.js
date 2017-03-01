@@ -5,7 +5,12 @@ import './index.scss';
 export default class MultiSelectGroup extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { checkAll: false, positions: props.group.positions, indeterminate: false };
+		this.state = {
+			checkAll: false,
+			positions: props.group.positions,
+			indeterminate: false,
+			showPositions: true
+		};
 	}
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.clearFlag !== this.props.clearFlag) {
@@ -16,7 +21,9 @@ export default class MultiSelectGroup extends Component {
 		this.checkAll(e.target.checked, false);
 	}
 	onToggle() {
-
+		this.setState({
+			showPositions: !this.state.showPositions
+		});
 	}
 	onItemCheckChange(id, checked) {
 		let positions = this.state.positions || [];
@@ -68,14 +75,20 @@ export default class MultiSelectGroup extends Component {
 	}
 	render() {
 		const group = this.props.group;
-		const { positions, checkAll } = this.state;
+		const { positions, checkAll, showPositions } = this.state;
+		const contentClazz = showPositions ? 'show' : 'hide';
+		const dropDownClazz = showPositions ? 'drop-down' : 'drop-up';
 
 		return (
 			<div className="multi-select-group">
 				<div className="multi-select-group-header">
-					<input ref="groupNode" type="checkbox" checked={checkAll} onChange={this.onCheckAllChange.bind(this)}/>{group.name}{group.value}
+					<input className="multi-select-checkbox" ref="groupNode" type="checkbox" checked={checkAll} onChange={this.onCheckAllChange.bind(this)}/>
+					<label onClick={this.onToggle.bind(this)}>
+						{group.name} <span className={`drop-btn ${dropDownClazz}`}></span>
+					</label>
+					<span className="badge">{group.value}</span>
 				</div>
-				<div className="multi-select-group-content">
+				<div className={`multi-select-group-content ${contentClazz}`}>
 					{positions.map(position => {
 						return <MultiSelectItem key={position.id} itemData={position} onCheckChange={this.onItemCheckChange.bind(this)} />
 					})}

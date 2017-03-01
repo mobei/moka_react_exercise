@@ -35,10 +35,7 @@ module.exports = {
             use: ['style-loader', 'css-loader', 'sass-loader'],
         }, {
             test: /\.(png|jpg)$/,
-            loader: 'url?limit=8192'
-        }, {
-            test: /\.(woff|woff2|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/,
-            loader: "url?limit=10000"
+            use:['url-loader?limit=8192']
         }]
     },
     plugins: [

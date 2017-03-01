@@ -22,9 +22,10 @@ export default class MultiSelectItem extends Component {
 	render() {
 		const item = this.props.itemData;
 		const checked = this.state.checked || false;
+		
 		return (
 			<div className="multi-select-item">
-				<label><input type="checkbox" checked={checked} onChange={this.onCheckChange.bind(this)}/>{item.name}</label>
+				<label><input className="multi-select-checkbox" type="checkbox" checked={checked} onChange={this.onCheckChange.bind(this)}/>{item.name}</label>
 				<span className="badge">{item.value}</span>
 			</div>
 		)
