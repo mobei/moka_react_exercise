@@ -7,6 +7,11 @@ export default class MultiSelectGroup extends Component {
 		super(props);
 		this.state = { checkAll: false, positions: props.group.positions, indeterminate: false };
 	}
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.clearFlag !== this.props.clearFlag) {
+			this.checkAll(false, false);
+		}
+	}
 	onCheckAllChange(e) {
 		this.checkAll(e.target.checked, false);
 	}
@@ -64,7 +69,7 @@ export default class MultiSelectGroup extends Component {
 	render() {
 		const group = this.props.group;
 		const { positions, checkAll } = this.state;
-		console.log(positions);
+
 		return (
 			<div className="multi-select-group">
 				<div className="multi-select-group-header">
@@ -81,5 +86,6 @@ export default class MultiSelectGroup extends Component {
 }
 
 MultiSelectGroup.propTypes = {
-	group: PropTypes.object.isRequired
+	group: PropTypes.object.isRequired,
+	clearFlag: PropTypes.bool.isRequired,
 };
