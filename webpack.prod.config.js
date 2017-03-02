@@ -61,10 +61,5 @@ module.exports = {
             disable: false,
             allChunks: true
         }),
-    ],
-
-    devServer: {
-        contentBase: path.resolve(__dirname, webpackConf.contextPath),
-        port: webpackConf.port,
-    },
+    ]
 };
