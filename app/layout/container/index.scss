@@ -1,1 +1,7 @@
-.mk-container {}
+.mk-container {
+	text-align: center;
+    color: #848282;
+    &>div{
+    	margin-top: 50px;
+    }
+}

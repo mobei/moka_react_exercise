@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import MultiSelectItem from './multi-select-item';
+import Checkbox from '../checkbox';
 import './index.scss';
 
 export default class MultiSelectGroup extends Component {
@@ -17,8 +18,8 @@ export default class MultiSelectGroup extends Component {
 			this.checkAll(false, false);
 		}
 	}
-	onCheckAllChange(e) {
-		this.checkAll(e.target.checked, false);
+	onCheckAllChange(checked) {
+		this.checkAll(checked, false);
 	}
 	onToggle() {
 		this.setState({
@@ -51,7 +52,7 @@ export default class MultiSelectGroup extends Component {
 		}
 
 		checkAll = checkedList.length === positions.length; //全选中
-		indeterminate = (checkedList.length && checkedList.length < positions.length); //部分选中
+		indeterminate = !!(checkedList.length && checkedList.length < positions.length); //部分选中
 
 		this.checkAll(checkAll, indeterminate, positions);
 	}
@@ -70,20 +71,24 @@ export default class MultiSelectGroup extends Component {
 			});
 		}
 
-		this.refs.groupNode.indeterminate = indeterminate;
 		this.setState({checkAll, indeterminate, positions});
 	}
 	render() {
 		const group = this.props.group;
-		const { positions, checkAll, showPositions } = this.state;
+		const { positions, checkAll, indeterminate, showPositions } = this.state;
 		const contentClazz = showPositions ? 'show' : 'hide';
 		const dropDownClazz = showPositions ? 'drop-down' : 'drop-up';
 
 		return (
 			<div className="multi-select-group">
-				<div className="multi-select-group-header">
-					<input className="multi-select-checkbox" ref="groupNode" type="checkbox" checked={checkAll} onChange={this.onCheckAllChange.bind(this)}/>
-					<label onClick={this.onToggle.bind(this)}>
+				<div className="multi-select-group-header ">
+					<Checkbox
+						className="multi-select-checkbox"
+						checked={checkAll}
+						indeterminate={indeterminate}
+						onCheckChange={this.onCheckAllChange.bind(this)}
+					/>
+					<label className="multi-select-group-name" onClick={this.onToggle.bind(this)}>
 						{group.name} <span className={`drop-btn ${dropDownClazz}`}></span>
 					</label>
 					<span className="badge">{group.value}</span>

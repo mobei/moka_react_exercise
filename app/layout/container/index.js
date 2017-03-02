@@ -5,7 +5,8 @@ export default class Container extends Component {
 	render() {
 		return (
 			<div className="mk-container">
-				Container 
+				<div>感谢查看！</div>
+				<span>希望有机会参加面试</span>
 			</div>
 		)
 	}

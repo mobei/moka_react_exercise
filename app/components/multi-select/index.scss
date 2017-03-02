@@ -39,11 +39,12 @@ $imagePath: './images/';
     			padding: 0px 10px;
 			}
 			.multi-select-checkbox {
-				margin-right: 10px;
+				// margin-right: 10px;
 			}
 			.multi-select-group-header {
 				line-height: 25px;
-				label{
+
+				.multi-select-group-name {
 					cursor: pointer;
 					.drop-btn {
 						display: inline-block;

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Checkbox from '../checkbox';
 import './index.scss';
 
 export default class MultiSelectItem extends Component {
@@ -11,8 +12,7 @@ export default class MultiSelectItem extends Component {
 			checked: nextProps.itemData.checked
 		});
 	}
-	onCheckChange(e) {
-		let checked = e.target.checked;
+	onCheckChange(checked) {
 		this.setState({ checked });
 		
 		if(this.props.onCheckChange) {
@@ -25,7 +25,12 @@ export default class MultiSelectItem extends Component {
 		
 		return (
 			<div className="multi-select-item">
-				<label><input className="multi-select-checkbox" type="checkbox" checked={checked} onChange={this.onCheckChange.bind(this)}/>{item.name}</label>
+				<Checkbox
+					className="multi-select-checkbox"
+					checked={checked}
+					onCheckChange={this.onCheckChange.bind(this)}
+					label={item.name}
+				/>
 				<span className="badge">{item.value}</span>
 			</div>
 		)
